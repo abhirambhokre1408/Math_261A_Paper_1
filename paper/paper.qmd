@@ -1,0 +1,157 @@
+---
+title: "Physical Inactivity and Adult Obesity in US Counties"
+author: "Abhiram Bhokre"
+thanks: "Project repository available at: [https://github.com/abhirambhokre1408/Math_261A_Paper_1](https://github.com/abhirambhokre1408/Math_261A_Paper_1)."
+date: today
+date-format: long
+format: 
+  pdf:
+    keep-tex: true
+    include-in-header:
+      text: |
+        \usepackage{float}     
+        \usepackage{placeins}
+bibliography: references.bib
+execute-dir: project
+
+abstract: >
+  In this paper, I examine whether county-level physical inactivity is linked to adult obesity across U.S. counties. Using the 2023 County Health Rankings & Roadmaps dataset[@CHR2023], I fit a simple linear regression with adult obesity (percent of adults with BMI ≥ 30) as the outcome and physical inactivity (percent of adults reporting no leisure-time physical activity) as the predictor. The results show a strong positive relationship: each one-percentage-point increase in inactivity is associated with an estimated 0.71 percentage-point increase in adult obesity (95% confidence interval: 0.70 to 0.73). The model explains about 63% of the variation in obesity across counties (n = 3,191). These findings are ecological and descriptive; they highlight a robust county-level association but do not imply individual-level causation.
+
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+# load libraries
+library(tidyverse)
+library(palmerpenguins)
+library(ggpubr)
+library(patchwork)
+
+getwd()
+list.files()
+file.exists("/Users/spartan/Documents/Math 261A/Project 1/references.bib")
+```
+
+# Introduction
+
+Obesity remains a prominent public health challenge in the United States and is closely linked to chronic conditions such as type 2 diabetes, cardiovascular disease, and certain cancers. At the same time, many communities report substantial levels of physical inactivity—adults who do not engage in leisure-time physical activity. Because both outcomes and behaviors vary widely across places, county-level comparisons offer a useful lens for understanding how community circumstances relate to health.
+
+This project investigates whether counties with higher physical inactivity also tend to have higher adult obesity. I focus on the 2023 County Health Rankings & Roadmaps (CHR&R) dataset, which provides comparable, county-level indicators assembled from established surveys and administrative sources. Two measures are central here: (1) adult obesity (%), the share of adults with BMI ≥ 30, and (2) physical inactivity (%), the share of adults reporting no leisure-time physical activity. These indicators are widely used in community health assessments and grant applications, making a simple, transparent analysis especially relevant for local decision-makers.
+
+I am fitting a simple linear regression with adult obesity as the outcome and physical inactivity as the predictor, using the most recent available year. This approach yields an interpretable summary of the association—how much obesity tends to increase, on average, as inactivity rises by one percentage point—while keeping the modeling assumptions and diagnostics accessible to a broad audience. The analysis is ecological and cross-sectional: it describes place-level patterns rather than individual behavior, and it does not establish causal effects.
+
+The primary research questions are:
+
+1. Do U.S. counties with higher physical inactivity also have higher adult obesity?
+
+2. How large is the average change in obesity associated with a one-percentage-point increase in inactivity?
+
+3. How much of the between-county variation in obesity can be summarized by a single linear predictor—physical inactivity?
+
+This study makes three contributions. First, it provides a reproducible pipeline—from raw CHR&R spreadsheets to a cleaned analysis file—so that results can be regenerated or extended to future years. Second, it presents a clear, policy-relevant effect size that can be communicated without specialized statistical background. Third, it surfaces scope conditions and limitations that are often overlooked: ecological inference issues, potential confounding by age structure, socioeconomic status, rurality/urban form, or food and activity environments, and the fact that estimates reflect associations at one point in time.
+
+The paper is organized as follows: the Data section describes the dataset and how the analysis file was prepared; the Methods section outlines the regression model and reporting choices; the Results section presents the fitted model, the scatter plot with the regression line, and summary tables; the Discussion highlights interpretation and limitations; and the Reproducibility and References sections document the pipeline and sources.
+
+# Data
+
+The units in this study are U.S. counties and county-equivalents (e.g., Louisiana parishes, Alaska boroughs). Each row corresponds to one county. The cleaned dataset used in the analysis contains 3,191 counties with complete information. Working at the county level provides a community-scale view of how behavior (physical inactivity) relates to health outcomes (obesity).
+
+The data come from the 2023 County Health Rankings & Roadmaps (CHR&R) workbook (Harvard Dataverse). I use the Ranked Measure Data sheet, which compiles comparable county indicators derived largely from national surveys and small-area estimates. Although the workbook contains many indicators, this project focuses on two continuous measures expressed as percentages:
+
+1. Adult Obesity (obesity_pct) — share of adults with BMI ≥ 30.
+
+2. Physical Inactivity (inactivity_pct) — share of adults reporting no leisure-time physical activity.
+
+To prepare the analysis file, I loaded the Ranked Measure Data sheet and retained standard identifiers (FIPS, state, county, year) together with the two target measures. Because the workbook includes many related fields (ranks, z-scores, confidence limits, numerators/denominators), I selected the value/percent columns only to keep scales consistent. Percentages encoded as text or proportions were parsed and, when necessary, rescaled so that both variables lie on a 0–100 scale. I then applied simple sanity checks—dropping rows with missing values or out-of-range percentages—and saved a clean analysis dataset in the project’s data/ folder.
+
+After cleaning, the modeling file contains 3,191 counties with complete information. Physical inactivity ranges from about 10% to 47%, and adult obesity ranges from about 18% to 53%, providing substantial between-county variation and a dense cloud of points suitable for linear regression and visualization. These indicators are derived from surveys and model-based estimation, so they carry sampling and measurement error that can vary with county size and response patterns. The analysis is ecological and cross-sectional; results describe county-level associations and should not be interpreted as individual-level causal effects.
+
+# Results
+
+The fitted regression model shows a clear negative relationship between education and income at the neighborhood level. The estimated equation is:
+
+```{=latex}
+
+$$
+\text{Obesity}_i = \beta_0 + \beta_1\,\text{Inactivity}_i + \varepsilon_i,
+$$
+
+
+where \( \text{Obesity}_i \) is the percent of adults with BMI \(\ge 30\) in county \( i \); \( \text{Inactivity}_i \) is the percent of adults reporting no leisure-time physical activity in county \( i \); \( \beta_0 \) is the intercept (predicted obesity when inactivity is zero); \( \beta_1 \) is the slope (change in obesity, in percentage points, per \(+1\) pp in inactivity); and \( \varepsilon_i \) is the error term capturing unmeasured influences.
+
+\textbf{Estimation and reporting} I fit the model by ordinary least squares (OLS) and report the estimated slope with a 95% confidence interval, the coefficient of determination \( R^2 \), and the sample size \( n \). Because both variables are bounded percentages (0–100), I also checked robustness to heteroskedasticity using HC1 robust standard errors; conclusions were unchanged, so the main tables present OLS estimates. The paper includes a single scatter plot with the OLS line and its 95% band to visualize the fitted relationship.
+
+\textbf{Assumptions} As with any SLR, the analysis relies on (1) \textbf{linearity} of the mean relationship, (2) \textbf{independence} of residuals across counties, (3) \textbf{approximately constant variance} of residuals (homoscedasticity; variance of \( \varepsilon_i \) roughly constant over \( \text{Inactivity}_i \)), and (4) \textbf{approximate normality} of residuals for interval estimates.
+```
+
+**Scope and limitations.** The model is **bivariate** and **ecological**: it summarizes an association at the county level and does not imply individual-level causation. Important covariates (e.g., age structure, income, rurality, built environment) are not included here but could be added in future extensions.
+
+**Software and workflow.** All analyses were done in R [@R-base] using `readr` [@readr], `dplyr` [@dplyr], `ggplot2` [@ggplot2; @ggplot2-book], and `broom` [@broom]. A preprocessing script converts the CHR&R workbook into `data/county_health_model.csv`, and a modeling script fits the regression and generates the figure and tables used in the paper.
+
+```{r county-lm}
+#| echo: false
+#| warning: false
+#| message: false
+library(readr); library(ggplot2); library(dplyr); library(broom)
+
+# Fit the model
+d <- readr::read_csv("../data/county_health_model.csv", show_col_types = FALSE)
+lm_fit <- lm(obesity_pct ~ inactivity_pct, data = d)
+
+# Pull ingredients for inline reporting
+coefs <- coefficients(lm_fit)
+b0 <- coefs[1]; b1 <- coefs[2]
+tid <- tidy(lm_fit, conf.int = TRUE)
+sl  <- tid[tid$term == "inactivity_pct", ]
+r2  <- glance(lm_fit)$r.squared
+nobs <- nobs(lm_fit)
+
+p_txt <- ifelse(sl$p.value < 0.001, "< 0.001",
+                format(round(sl$p.value, 3), nsmall = 3))
+
+```
+The fitted regression shows a clear positive association between county physical inactivity and adult obesity. The estimated equation is
+$$
+\widehat{\text{Obesity}} \;=\; `r sprintf('%.2f', b0)` \;+\; `r sprintf('%.3f', b1)` \times \text{Inactivity}.
+$$
+
+Here, the intercept of about **`r sprintf('%.0f', b0)`** represents the predicted adult obesity percentage at zero inactivity (a hypothetical baseline). The slope indicates that for each **one–percentage-point** increase in inactivity, the predicted adult obesity rate increases by about **`r sprintf('%.2f', b1)`** percentage points (**95% CI:** `r sprintf('%.2f', sl$conf.low)` to `r sprintf('%.2f', sl$conf.high)`; *p* `r p_txt`). The model explains roughly **`r sprintf('%.1f', 100*r2)`**% of the between-county variation in obesity (**n = `r nobs`**).
+
+```{r fig-county-scatter}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-cap: "Adult Obesity (%) vs Physical Inactivity (%) — U.S. Counties (2023). Points are counties; the line is the OLS fit with a 95% confidence band."
+ggplot(d, aes(x = inactivity_pct, y = obesity_pct)) +
+  geom_point(alpha = 0.25, size = 1) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  xlab("Physical inactivity (%)") + ylab("Adult obesity (%)") +
+  theme_minimal(base_size = 12)
+```
+
+I test the null hypothesis \(H_0:\ \beta_1 = 0\) against the two-sided alternative \(H_1:\ \beta_1 \neq 0\). With the estimated slope, confidence interval, and p-value reported above, there is strong evidence of a positive association between inactivity and obesity at the county level.
+
+```{r}
+#| label: tbl-model
+#| tbl-cap: "Regression results for Adult Obesity on Physical Inactivity."
+#| tbl-pos: H
+#| echo: false
+#| message: false
+#| warning: false
+
+library(broom); library(dplyr); library(knitr)
+
+mod <- lm(obesity_pct ~ inactivity_pct, data = d)
+
+tidy(mod) |>
+  mutate(across(where(is.numeric), ~ round(., 3))) |>
+  kable(align = "lrrrr")
+```
+```{=latex}
+\FloatBarrier
+```
+
+
+# References
