@@ -53,7 +53,7 @@ For this analysis, only *adult obesity (%)* and *physical inactivity (%)* were u
 
 ---
 
-##Statistical Methods
+## Statistical Methods
 
 The fitted model used for this analysis is a **Simple Linear Regression (SLR)** defined as:
 
@@ -71,8 +71,6 @@ Inactivityᵢ — Percentage of adults reporting no leisure-time physical activi
 β₁ (Slope) — Change in obesity (percentage points) per one–percentage–point increase in inactivity
 
 εᵢ — Random error term capturing unobserved influences
-
----
 
 ---
 
