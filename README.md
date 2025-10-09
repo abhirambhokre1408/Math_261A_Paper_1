@@ -77,7 +77,7 @@ Inactivityᵢ — Percentage of adults reporting no leisure-time physical activi
 ## Use of LLMs
 
 This project made limited use of **Large Language Models (LLMs)** to assist with:
-- Refining explanations of regression model assumptions and results  
+- Initial brainstorming for research on project topic/dataset 
 - Formatting the README, Quarto syntax, and LaTeX equations  
 
 All analysis, code execution, interpretation, and writing decisions were independently verified by the author.
