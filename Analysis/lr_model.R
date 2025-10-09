@@ -46,3 +46,4 @@ p <- ggplot(d, aes(inactivity_pct, obesity_pct)) +
   ) +
   theme_minimal(base_size = 12)
 ggsave("fig/county_scatter.png", p, width = 7, height = 5, dpi = 300)
+
