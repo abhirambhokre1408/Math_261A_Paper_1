@@ -41,17 +41,20 @@ Math_261A_Paper_1/
 ```
 ---
 
-## Data Source
+## 📊 Data Source & License
 
-**Dataset:** County Health Rankings & Roadmaps (CHR&R) 2023  
-**Publisher:** University of Wisconsin Population Health Institute  
-**License:** [Open Data Commons Attribution License (ODC-By 1.0)](https://opendatacommons.org/licenses/by/1-0/)  
-**Access Link:** [https://www.countyhealthrankings.org/](https://www.countyhealthrankings.org/)  
+- **Dataset:** [County Health Rankings & Roadmaps (CHR&R) 2023](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/XXXXXX)  
+- **Publisher:** University of Wisconsin Population Health Institute  
+- **Source:** [Harvard Dataverse – County Health Rankings](https://dataverse.harvard.edu/)  
+- **Access Link:** [https://www.countyhealthrankings.org/](https://www.countyhealthrankings.org/)  
+- **License:** [Open Data Commons Attribution License (ODC-By 1.0)](https://opendatacommons.org/licenses/by/1-0/)  
 
-Each row in the dataset represents a **U.S. county**, including indicators on health outcomes and behaviors.  
-For this analysis, only *adult obesity (%)* and *physical inactivity (%)* were used.
+Each row in the dataset represents a U.S. county, including indicators on health outcomes and behaviors.  
+For this analysis, only **adult obesity (%)** and **physical inactivity (%)** were used.
 
 ---
+
+
 
 ## Statistical Methods
 
