@@ -192,7 +192,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Physical Inactivity and Adult Obesity in US Counties},
+  pdftitle={Modeling the association between Physical Inactivity and Adult Obesity in U.S. Counties},
   pdfauthor={Abhiram Bhokre},
   colorlinks=true,
   linkcolor={blue},
@@ -202,28 +202,28 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Physical Inactivity and Adult Obesity in US
-Counties\thanks{Project repository available at:
+\title{Modeling the association between Physical Inactivity and Adult
+Obesity in U.S. Counties\thanks{Project repository available at:
 \url{https://github.com/abhirambhokre1408/Math_261A_Paper_1}.}}
 \author{Abhiram Bhokre}
-\date{October 8, 2025}
+\date{October 29, 2025}
 
 \begin{document}
 \maketitle
 \begin{abstract}
 In this paper, I examine whether county-level physical inactivity is
 linked to adult obesity across U.S. counties. Using the 2023 County
-Health Rankings \& Roadmaps dataset(County Health Rankings \& Roadmaps
-2023), I fit a simple linear regression with adult obesity (percent of
-adults with BMI ≥ 30) as the outcome and physical inactivity (percent of
-adults reporting no leisure-time physical activity) as the predictor.
-The results show a strong positive relationship: each
-one-percentage-point increase in inactivity is associated with an
-estimated 0.71 percentage-point increase in adult obesity (95\%
-confidence interval: 0.70 to 0.73). The model explains about 63\% of the
-variation in obesity across counties (n = 3,191). These findings are
-ecological and descriptive; they highlight a robust county-level
-association but do not imply individual-level causation.
+Health Rankings \& Roadmaps dataset(University of Wisconsin Population
+Health Institute 2023), I fit a simple linear regression with adult
+obesity (percent of adults with BMI ≥ 30) as the outcome and physical
+inactivity (percent of adults reporting no leisure-time physical
+activity) as the predictor. The results show a strong positive
+relationship: each one-percentage-point increase in inactivity is
+associated with an estimated 0.71 percentage-point increase in adult
+obesity (95\% confidence interval: 0.70 to 0.73). The model explains
+about 63\% of the variation in obesity across counties (n = 3,191).
+These findings are ecological and descriptive; they highlight a robust
+county-level association but do not imply individual-level causation.
 \end{abstract}
 
 
@@ -231,333 +231,191 @@ association but do not imply individual-level causation.
 
 Obesity remains a prominent public health challenge in the United States
 and is closely linked to chronic conditions such as type 2 diabetes,
-cardiovascular disease, and certain cancers. At the same time, many
-communities report substantial levels of physical inactivity---adults
-who do not engage in leisure-time physical activity. Because both
-outcomes and behaviors vary widely across places, county-level
-comparisons offer a useful lens for understanding how community
-circumstances relate to health.
+cardiovascular disease, and certain cancers (Centers for Disease Control
+and Prevention 2024; World Health Organization 2023).\\
+At the same time, many communities report substantial levels of physical
+inactivity---adults who do not engage in leisure-time physical activity
+(Centers for Disease Control and Prevention 2023b).\\
+Because both outcomes and behaviors vary widely across places,
+county-level comparisons offer a useful lens for understanding how
+community circumstances relate to health.
 
 This project investigates whether counties with higher physical
-inactivity also tend to have higher adult obesity. I focus on the 2023
-County Health Rankings \& Roadmaps (CHR\&R) dataset, which provides
-comparable, county-level indicators assembled from established surveys
-and administrative sources. Two measures are central here: (1) adult
-obesity (\%), the share of adults with BMI ≥ 30, and (2) physical
-inactivity (\%), the share of adults reporting no leisure-time physical
-activity. These indicators are widely used in community health
-assessments and grant applications, making a simple, transparent
-analysis especially relevant for local decision-makers.
+inactivity also tend to have higher adult obesity.\\
+I focus on the 2023 County Health Rankings \& Roadmaps (CHR\&R) dataset
+(University of Wisconsin Population Health Institute 2023), which
+provides comparable, county-level indicators assembled from established
+surveys and administrative sources.\\
+Two measures are central here: (1) adult obesity (\%), the share of
+adults with BMI ≥ 30, and (2) physical inactivity (\%), the share of
+adults reporting no leisure-time physical activity.\\
+These indicators are widely used in community health assessments and
+grant applications, making a simple, transparent analysis especially
+relevant for local decision-makers.
 
-I am fitting a simple linear regression with adult obesity as the
-outcome and physical inactivity as the predictor, using the most recent
-available year. This approach yields an interpretable summary of the
-association---how much obesity tends to increase, on average, as
-inactivity rises by one percentage point---while keeping the modeling
-assumptions and diagnostics accessible to a broad audience. The analysis
-is ecological and cross-sectional: it describes place-level patterns
-rather than individual behavior, and it does not establish causal
-effects.
+I fit a simple linear regression with adult obesity as the outcome and
+physical inactivity as the predictor, using the most recent available
+year.\\
+This approach yields an interpretable summary of the association---how
+much obesity tends to increase, on average, as inactivity rises by one
+percentage point---while keeping the modeling assumptions and
+diagnostics accessible to a broad audience.\\
+The analysis is ecological and cross-sectional: it describes place-level
+patterns rather than individual behavior, and it does not establish
+causal effects.
 
 The primary research questions are:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   Do U.S. counties with higher physical inactivity also have higher
-  adult obesity?
+  adult obesity?\\
 \item
   How large is the average change in obesity associated with a
-  one-percentage-point increase in inactivity?
+  one-percentage-point increase in inactivity?\\
 \item
   How much of the between-county variation in obesity can be summarized
   by a single linear predictor---physical inactivity?
 \end{enumerate}
 
-This study makes three contributions. First, it provides a reproducible
-pipeline---from raw CHR\&R spreadsheets to a cleaned analysis file---so
-that results can be regenerated or extended to future years. Second, it
-presents a clear, policy-relevant effect size that can be communicated
-without specialized statistical background. Third, it surfaces scope
-conditions and limitations that are often overlooked: ecological
-inference issues, potential confounding by age structure, socioeconomic
-status, rurality/urban form, or food and activity environments, and the
-fact that estimates reflect associations at one point in time.
+This study makes three contributions.\\
+First, it provides a reproducible pipeline---from raw CHR\&R
+spreadsheets to a cleaned analysis file---so that results can be
+regenerated or extended to future years.\\
+Second, it presents a clear, policy-relevant effect size that can be
+communicated without specialized statistical background.\\
+Third, it surfaces scope conditions and limitations that are often
+overlooked: ecological inference issues, potential confounding by age
+structure, socioeconomic status, rurality/urban form, or food and
+activity environments, and the fact that estimates reflect associations
+at one point in time.
 
-The paper is organized as follows: the Data section describes the
-dataset and how the analysis file was prepared; the Methods section
-outlines the regression model and reporting choices; the Results section
-presents the fitted model, the scatter plot with the regression line,
-and summary tables; the Discussion highlights interpretation and
-limitations; and the Reproducibility and References sections document
-the pipeline and sources.
+The paper is organized as follows: the \textbf{Data} section describes
+the dataset and how the analysis file was prepared; the \textbf{Methods}
+section outlines the regression model and reporting choices; the
+\textbf{Results} section presents the fitted model, scatter plot, and
+summary tables; the \textbf{Discussion} highlights interpretation and
+limitations; and the \textbf{Reproducibility} and \textbf{References}
+sections document the pipeline and sources.
 
 \section{Data}\label{data}
 
-The units of analysis in this study are U.S. counties and
-county-equivalents (e.g., parishes in Louisiana, boroughs in Alaska),
-representing a total of 3,191 observations. Each record captures
-community-level health indicators compiled from the 2023 County Health
-Rankings \& Roadmaps (CHR\&R) dataset (Harvard Dataverse). These
-measures synthesize information from multiple national surveys and
-administrative data sources, allowing for direct cross-county
-comparisons.
+The units of analysis in this study are \textbf{U.S. counties and
+county-equivalents} (e.g., parishes in Louisiana, boroughs in Alaska),
+representing a total of \textbf{3,191 observations}.\\
+Each record captures community-level health indicators compiled from the
+\textbf{2023 County Health Rankings \& Roadmaps (CHR\&R)} dataset
+(Harvard Dataverse) (University of Wisconsin Population Health Institute
+2023).\\
+The CHR\&R dataset synthesizes information from multiple national
+surveys and administrative data sources, allowing for direct, comparable
+cross-county analysis.
 
-Two variables were extracted from the Ranked Measure Data worksheet of
-the CHR\&R Excel workbook:
+It is important to note that these measures are \textbf{modeled
+estimates}, not census counts.\\
+The underlying data are derived primarily from the \textbf{Behavioral
+Risk Factor Surveillance System (BRFSS)} --- an annual,
+random-digit--dial telephone survey of non-institutionalized adults aged
+18 years and older conducted by the Centers for Disease Control and
+Prevention (CDC) (Centers for Disease Control and Prevention 2023a).\\
+County-level prevalence rates for indicators such as adult obesity and
+physical inactivity are generated using statistical small-area
+estimation models that combine survey responses with demographic and
+geographic data.\\
+Thus, each county's value represents a \textbf{population-weighted
+estimate} of adults living there, based on representative sampling
+rather than a full enumeration.
+
+Two variables were extracted from the \emph{Ranked Measure Data}
+worksheet of the CHR\&R Excel workbook:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
-  Adult Obesity (\%): The percentage of adults aged 20 and older with a
-  body mass index (BMI) ≥ 30.
+  \textbf{Adult Obesity (\%):} The percentage of adults aged 20 and
+  older with a body mass index (BMI) ≥ 30, based on self-reported height
+  and weight.\\
 \item
-  Physical Inactivity (\%): The percentage of adults reporting no
-  leisure-time physical activity.
+  \textbf{Physical Inactivity (\%):} The percentage of adults reporting
+  no leisure-time physical activity.
 \end{enumerate}
 
 These indicators were chosen because they are conceptually and
 empirically central to population-level health and are widely used by
 policymakers in grant applications, program design, and community health
-assessment.
+assessment. All data preprocessing was conducted in \textbf{R}, using
+the \texttt{readxl}, \texttt{janitor}, \texttt{dplyr}, and
+\texttt{readr} packages.\\
+The following quality-control and transformation steps were applied to
+ensure consistency and reproducibility:
 
-All data preprocessing was conducted in R using the readxl, janitor,
-dplyr, and readr packages. The following quality-control and
-transformation steps were applied to ensure consistency and
-reproducibility:
+\textbf{Variable Identification and Parsing:} Candidate column names
+were identified programmatically using keyword matching (e.g.,
+\texttt{"obes"}, \texttt{"inactiv"}, \texttt{"no\_leisure"}). This
+dynamic selection ensured robustness across workbook versions with minor
+name changes.\\
+\textbf{Selection of Comparable Measures:}\\
+For both variables, only the ``percent'' or ``value'' columns were
+retained, excluding derived metrics such as ranks, z-scores, or standard
+errors. This preserved direct interpretability on a 0--100 percentage
+scale.\\
+- \textbf{Numeric Conversion and Rescaling:} Textual or
+proportion-formatted percentages were parsed into numeric form using
+\texttt{parse\_number()}. Values \textless{} 1.5 were assumed to
+represent proportions and rescaled by a factor of 100 to enforce a
+consistent 0--100 range.\\
+\textbf{Range Validation and Missing-Value Handling:} Records were
+retained only if both obesity and inactivity percentages were within the
+valid interval {[}0, 100{]}. Counties with missing or implausible values
+were excluded, yielding a final dataset of \textbf{3,191 complete
+cases}. \textbf{Reproducible File Output:} A cleaned dataset was
+exported as \texttt{data/county\_health\_model.csv} for downstream
+modeling, ensuring full transparency and reusability.
 
-\begin{itemize}
-\item
-  \textbf{Variable Identification and Parsing:} Candidate column names
-  were identified programmatically using keyword matching (e.g., `obes',
-  `inactiv', `no\_leisure'). This dynamic selection ensured robustness
-  across workbook versions with minor name changes.
-\item
-  \textbf{Selection of Comparable Measures:} For both variables, only
-  the `percent' or `value' columns were retained, excluding derived
-  metrics such as ranks, z-scores, or standard errors. This preserved
-  direct interpretability on a 0--100 percentage scale.
-\item
-  \textbf{Numeric Conversion and Rescaling:} Textual or
-  proportion-formatted percentages were parsed into numeric form using
-  parse\_number(). Values ≤ 1.5 were assumed to represent proportions
-  and were rescaled by a factor of 100 to enforce a consistent 0--100
-  range.
-\item
-  \textbf{Range Validation and Missing-Value Handling:} Records were
-  retained only if both obesity and inactivity percentages were within
-  the valid interval {[}0, 100{]}. Counties with missing or implausible
-  values were excluded, yielding a final dataset of 3,191 complete
-  cases.
-\item
-  \textbf{Reproducible File Output:} A cleaned dataset was exported as
-  data/county\_health\_model.csv for downstream modeling, ensuring full
-  transparency and reusability.
-\end{itemize}
-
-After cleaning, physical inactivity ranged from approximately 10\% to
-47\%, and adult obesity ranged from 18\% to 53\%. The strong variation
-across counties provides an empirically rich context for assessing
-linear relationships between behavioral and health outcomes.
+After cleaning, \textbf{physical inactivity} ranged from approximately
+\textbf{10\% to 47\%}, and \textbf{adult obesity} ranged from
+\textbf{18\% to 53\%}. Because these are population-weighted estimates
+based on survey responses, rather than census totals, they provide a
+statistically reliable yet approximate view of health behavior and
+outcomes at the county level. The broad variation across counties
+provides an empirically rich context for assessing linear relationships
+between behavioral and health outcomes.
 
 \section{Methods}\label{methods}
 
-This study employs Simple Linear Regression (SLR) to model the
-relationship between adult obesity and physical inactivity across U.S.
-counties. The model is defined as:
+This study uses \textbf{Simple Linear Regression (SLR)} to quantify the
+relationship between \emph{adult obesity} and \emph{physical inactivity}
+across U.S. counties.\\
+The model is specified as:
 
 \[
-\text{Obesity}_i = \beta_0 + \beta_1(\text{Inactivity}_i) + \varepsilon_i,
+\text{Obesity}_i = \beta_0 + \beta_1 \, \text{Inactivity}_i + \varepsilon_i, \quad i = 1, \dots, n
 \]
 
-where:
+where\\
+\(\text{Obesity}_i\) denotes the percentage of adults with BMI ≥ 30,\\
+\(\text{Inactivity}_i\) is the percentage of adults reporting no
+leisure-time physical activity,\\
+\(\beta_0\) is the intercept, \(\beta_1\) is the slope parameter, and\\
+\(\varepsilon_i\) is the random error term with \(E[\varepsilon_i] = 0\)
+and \(Var(\varepsilon_i) = \sigma^2\).
 
-\begin{itemize}
-\tightlist
-\item
-  \(\text{Obesity}_i\) is the percentage of adults with BMI \(\ge 30\)
-  in county \(i\),
-\item
-  \(\text{Inactivity}_i\) is the percentage of adults reporting no
-  leisure-time physical activity,
-\item
-  \(\beta_0\) is the intercept (expected obesity rate when inactivity is
-  0\%),
-\item
-  \(\beta_1\) is the slope parameter (change in obesity, in percentage
-  points, per 1-pp increase in inactivity), and\\
-\item
-  \(\varepsilon_i\) is the random error term assumed to satisfy
-  \(E[\varepsilon_i] = 0\), \(Var(\varepsilon_i) = \sigma^2\), and
-  \(Cov(\varepsilon_i, \varepsilon_j) = 0\) for \(i \ne j\).
-\end{itemize}
+\subsubsection{Estimation and Inference}\label{estimation-and-inference}
 
-Parameter estimates \(\hat{\beta}_0\) and \(\hat{\beta}_1\) were
-obtained using \textbf{Ordinary Least Squares (OLS)}, minimizing the
-residual sum of squares:
-
-\[
-RSS = \sum_{i=1}^{n} (\text{Obesity}_i - \hat{\beta}_0 - \hat{\beta}_1 \text{Inactivity}_i)^2.
-\]
-
-To address potential heteroskedasticity in residuals,
+Parameters \(\hat{\beta}_0\) and \(\hat{\beta}_1\) were estimated using
+\textbf{Ordinary Least Squares (OLS)}, minimizing the residual sum of
+squares.\\
+To account for possible heteroskedasticity,
 \textbf{heteroskedasticity-consistent (HC1)} standard errors were
-computed using the \emph{sandwich} estimator.\\
-The robust test results were consistent with the OLS inference:
-
-\[
-\hat{\beta}_1 = 0.714 \; (SE_{HC1} = 0.0110, \; t = 64.8, \; p < 2 \times 10^{-16}),
-\]
-
-confirming the stability of the estimated relationship.
-
-Model inference assumes four standard SLR conditions:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{Linearity:}
-  \(E[\text{Obesity}|\text{Inactivity}] = \beta_0 + \beta_1 \text{Inactivity},\)
-\item
-  \textbf{Independence:} errors are independent across counties,
-\item
-  \textbf{Homoscedasticity:} constant variance of residuals across
-  fitted values, and
-\item
-  \textbf{Normality:} residuals are approximately normally distributed
-  for valid confidence and prediction intervals.
-\end{enumerate}
-
-These assumptions were assessed through graphical diagnostics, as
-discussed below.
-
-Closed-form solutions are:
-
-\[
-\hat{\beta}_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, 
-\qquad
-\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x},
-\]
-
-where \(x_i = \text{Inactivity}_i\) and \(y_i = \text{Obesity}_i\).
-
-The model was estimated in \textbf{R} using the \texttt{lm()}
-function.\\
-The regression yielded:
+computed using the \emph{sandwich} estimator (White 1980).\\
+The fitted model was:
 
 \[
 \widehat{\text{Obesity}} = 17.81 + 0.714 \times \text{Inactivity},
-\]
-
-indicating that for every additional one-percentage-point increase in
-county-level physical inactivity,\\
-the predicted obesity rate rises by approximately \textbf{0.71
-percentage points}.\\
-The intercept of \textbf{17.81\%} represents the baseline obesity rate
-if inactivity were zero (a theoretical construct rather than an observed
-condition).
-
-The fitted model explains about \textbf{62.6\%} of the variance in adult
-obesity (\(R^2 = 0.626\), Adjusted \(R^2 = 0.626\)),\\
-with a \textbf{Residual Standard Error} of \textbf{2.86 percentage
-points} on 3,189 degrees of freedom.\\
-The \textbf{F-statistic} of 5336 (\(p < 2 \times 10^{-16}\)) strongly
-rejects the null hypothesis\\
-\(H_0: \beta_1 = 0\), providing robust evidence of an association
-between physical inactivity and obesity rates at the county level.
-
-\subsection{Diagnostics and Assumption
-Checks}\label{diagnostics-and-assumption-checks}
-
-\subsubsection{Linearity and
-Homoscedasticity}\label{linearity-and-homoscedasticity}
-
-The \textbf{Residuals vs Fitted} plot shows a roughly horizontal band of
-points centered near zero, indicating that the \textbf{linearity}
-assumption is largely satisfied.\\
-There is slight curvature near the extremes of inactivity, suggesting
-mild nonlinearity, but no strong systematic pattern.\\
-The spread of residuals remains approximately constant across fitted
-values, with no evident funneling, supporting \textbf{approximate
-homoscedasticity}.
-
-To further test robustness, \textbf{heteroskedasticity-consistent (HC1)}
-standard errors were computed.\\
-The minimal change in coefficient significance between classical and
-robust estimates implies that any variance heterogeneity is limited and
-does not materially affect inference.
-
-\subsubsection{Normality of Errors}\label{normality-of-errors}
-
-The \textbf{Normal Q--Q plot} shows residuals lying close to the 45°
-reference line, with modest deviations at both tails (particularly in
-the lower tail).\\
-This suggests \textbf{approximate normality} of residuals, sufficient
-for valid inference in large samples (\(n = 3191\)).\\
-Because of the large sample size, the \textbf{Central Limit Theorem
-(CLT)} ensures that the sampling distribution of \(\hat{\beta}_1\)
-remains nearly normal even under slight departures from residual
-normality.
-
-\subsubsection{Independence}\label{independence}
-
-Each observation represents a unique U.S. county; no spatially dependent
-sampling was imposed.\\
-Although neighboring counties could share regional health
-characteristics, no systematic serial correlation pattern was observed,
-and independence is considered reasonable for this ecological analysis.
-
-\subsubsection{Influence and Outlier
-Assessment}\label{influence-and-outlier-assessment}
-
-\textbf{Cook's distance diagnostics} (Figure X) revealed a few counties
-(e.g., IDs 256, 1467, 1863) with higher influence values, but all
-remained below 0.02 --- well under the conventional cutoff\\
-\(\displaystyle \frac{4}{n} \approx 0.0013\) for \(n = 3191\)
-observations.\\
-Hence, no single county exerts disproportionate influence on the
-estimated regression line.\\
-The regression results are therefore robust to local data perturbations.
-
-\subsubsection{Model Adequacy Summary}\label{model-adequacy-summary}
-
-Taken together, diagnostic checks support the adequacy of the
-\textbf{Simple Linear Regression (SLR)} model:
-
-\begin{itemize}
-\tightlist
-\item
-  The relationship between inactivity and obesity is linear and
-  strong.\\
-\item
-  Variance of residuals is approximately constant.\\
-\item
-  Outliers have minimal influence.\\
-\item
-  Residuals are nearly normal and independent.
-\end{itemize}
-
-Minor deviations (e.g., slight tail non-normality) are expected in large
-cross-sectional data but do not meaningfully affect statistical
-inference.\\
-For further model refinement, future extensions could include additional
-predictors (e.g., socioeconomic status, age structure, rurality) or
-spatial correlation adjustments to capture contextual factors
-influencing obesity rates.
-
-\section{Results}\label{results}
-
-The fitted regression model reveals a clear \textbf{positive}
-relationship between county-level physical inactivity and adult
-obesity.\\
-The estimated simple linear regression equation is:
-
-\[
-\text{Obesity}_i = \beta_0 + \beta_1(\text{Inactivity}_i) + \varepsilon_i,
-\]
-
-where:
+\] where:
 
 \begin{itemize}
 \tightlist
@@ -578,9 +436,75 @@ where:
   influences.
 \end{itemize}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+This indicates that a one--percentage--point increase in inactivity is
+associated with an estimated \textbf{0.71 percentage--point increase} in
+adult obesity.\\
+The model explains about \textbf{62.6\%} of the variation in obesity
+rates (\(R^2 = 0.626\), Adjusted \(R^2 = 0.626\)).\\
+Inference for \(\beta_1\) yielded \(t = 64.8\), \(SE_{HC1} = 0.011\),
+and \(p < 2 \times 10^{-16}\), confirming a highly significant
+association.
 
-\subsubsection{Estimation and Reporting}\label{estimation-and-reporting}
+\subsubsection{Model Assumptions and
+Diagnostics}\label{model-assumptions-and-diagnostics}
+
+The validity of OLS inference relies on the following assumptions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Linearity:} The conditional mean of obesity varies linearly
+  with inactivity.\\
+\item
+  \textbf{Independence:} County-level observations are independent.\\
+\item
+  \textbf{Homoscedasticity:} Residuals have constant variance.\\
+\item
+  \textbf{Normality:} Residuals are approximately normal.
+\end{enumerate}
+
+These were assessed graphically and numerically:
+
+\begin{itemize}
+\tightlist
+\item
+  The \textbf{residuals vs.~fitted} plot showed no major curvature or
+  funneling, supporting linearity and approximate homoscedasticity.\\
+\item
+  The \textbf{Normal Q--Q plot} indicated near-normal residuals, with
+  minor tail deviations tolerable under the large sample size
+  (\(n = 3{,}191\)).\\
+\item
+  \textbf{Cook's distance} values were all below 0.02, confirming no
+  influential outliers.\\
+\item
+  Residuals showed no visible spatial dependence across neighboring
+  counties.
+\end{itemize}
+
+Mild heteroskedasticity was detected, but HC1 robust errors yielded
+identical inference, confirming the stability of results.
+
+\subsubsection{Implementation}\label{implementation}
+
+All analyses were conducted in \textbf{R 4.4.1}, using the packages
+\texttt{stats}, \texttt{lmtest}, \texttt{sandwich}, and
+\texttt{broom}.\\
+The modeling script (\texttt{Analysis/lr\_model.R}) and cleaned dataset
+are included in the project repository for full reproducibility.
+
+\subsubsection{Model Adequacy and
+Extensions}\label{model-adequacy-and-extensions}
+
+Overall, diagnostics support the adequacy of the linear specification:
+the relationship is strong, approximately linear, and robust to variance
+heterogeneity and outliers.\\
+Future work could extend this model by incorporating socioeconomic or
+spatial covariates to better capture contextual variation in obesity
+prevalence across counties.
+
+\section{Results}\label{results}
 
 The model was fit using \textbf{Ordinary Least Squares (OLS)} in R (R
 Core Team 2024) with the packages \texttt{readr} (Wickham, Hester, and
@@ -592,69 +516,31 @@ minimizing the residual sum of squares (RSS):
 
 \[
 RSS = \sum_{i=1}^{n}(\text{Obesity}_i - \hat{\beta}_0 - \hat{\beta}_1\text{Inactivity}_i)^2.
-\]
-
-Because both variables are bounded percentages (0--100),
-heteroskedasticity-consistent (HC1) standard errors were computed using
-the \emph{sandwich} estimator to check robustness.\\
-The robust test results were consistent with the OLS inference,
-confirming the stability of the estimated relationship.
-
-Closed-form expressions for the least squares estimators are:
+\] To account for possible heteroskedasticity, \textbf{HC1-robust
+standard errors} were computed using the \emph{sandwich} estimator, and
+results were consistent with classical OLS inference.\\
+The fitted model is:
 
 \[
-\hat{\beta}_1 = \frac{\sum_i(x_i - \bar{x})(y_i - \bar{y})}{\sum_i(x_i - \bar{x})^2}, \qquad
-\hat{\beta}_0 = \bar{y} - \hat{\beta}_1\bar{x},
-\]
+\widehat{\text{Obesity}} = 17.81 + 0.714 \times \text{Inactivity},
+\] indicating that each one-percentage-point increase in inactivity is
+associated with an average \textbf{0.71-point rise} in adult obesity.\\
+The intercept (17.81\%) represents the expected obesity level at zero
+inactivity, used here only as a theoretical baseline.
 
-where \(x_i = \text{Inactivity}_i\) and \(y_i = \text{Obesity}_i\).
+The model explains \textbf{62.6\%} of cross-county variation in adult
+obesity (\(R^{2}=0.626\), Adjusted \(R^{2}=0.626\)) with a residual
+standard error of \textbf{2.86}.\\
+The slope is highly significant (\(t=64.8\), \(p<2\times10^{-16}\)), and
+the 95\% confidence interval \((0.695,\,0.734)\) confirms precision of
+the estimate.
 
-The regression was estimated in R using the \texttt{lm()} function,
-yielding the fitted model:
-
-\[
-\widehat{\text{Obesity}} = 17.81 + 0.714 \times \text{Inactivity}.
-\]
-
-This implies that for every one--percentage-point increase in
-county-level physical inactivity, the predicted adult obesity rate rises
-by approximately \textbf{0.71 percentage points}.\\
-The intercept of \textbf{17.81\%} represents the theoretical baseline
-obesity rate if inactivity were zero.
-
-\subsubsection{Goodness of Fit}\label{goodness-of-fit}
-
-The model explains approximately \textbf{62.6\%} of the variance in
-adult obesity (\(R^2 = 0.626\), Adjusted \(R^2 = 0.626\)), with a
-\textbf{Residual Standard Error} of \textbf{2.86 percentage points} on
-3,189 degrees of freedom.\\
-The \textbf{F-statistic} of 5336 (\(p < 2 \times 10^{-16}\)) strongly
-rejects the null hypothesis \(H_0: \beta_1 = 0\), indicating a
-statistically significant linear relationship.\\
-A 95\% confidence interval for the slope, \((0.695, 0.734)\), confirms
-the precision and strength of the estimated association.
-
-The regression line with its 95\% confidence band is shown in Figure X,
-illustrating the strong positive association between inactivity and
-obesity across U.S. counties.
-
-\subsubsection{Hypothesis Testing and
-Interpretation}\label{hypothesis-testing-and-interpretation}
-
-The hypothesis test of \(H_0: \beta_1 = 0\) versus
-\(H_1: \beta_1 \neq 0\) provides decisive evidence against the null
-(\emph{p} \textless{} \(2 \times 10^{-16}\)).\\
-Thus, there is a statistically significant and positive relationship
-between physical inactivity and adult obesity.\\
-The slope estimate of 0.714 suggests that counties with 10 percentage
-points higher inactivity tend to have, on average, about \textbf{7.1
-percentage points higher obesity rates}, holding all else constant.
-
-Residual variation of approximately ±3 percentage points around the
-regression line indicates moderate unexplained variability, but the
-model captures the dominant trend across the data.\\
-Robust HC1 standard errors confirm that inference remains unchanged even
-when accounting for mild heteroskedasticity.
+Together, these results indicate a strong, stable linear relationship
+between county-level inactivity and obesity, while allowing for modest
+unexplained variability from unmeasured social or environmental
+factors.\\
+The fitted regression line with its 95\% confidence band is displayed
+below.
 
 \subsubsection{Model Visualization}\label{model-visualization}
 
@@ -672,6 +558,35 @@ solid line shows the OLS fit with a 95\% confidence band.}
 
 \end{figure}%
 
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics{paper_files/figure-pdf/fig-residuals-1.pdf}
+
+}
+
+\caption{\label{fig-residuals}Residuals vs Fitted Values for the obesity
+\textasciitilde{} inactivity model. Random scatter around zero supports
+linearity and roughly constant variance; dashed line marks zero
+residual.}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics{paper_files/figure-pdf/fig-cooks-1.pdf}
+
+}
+
+\caption{\label{fig-cooks}Cook's Distance by observation (county). The
+dashed line marks a rule-of-thumb threshold (4/n). No observations
+exceed the threshold, indicating no highly influential counties.}
+
+\end{figure}%
+
 \begin{ThreePartTable}
 \begin{TableNotes}
 \item \textit{Note: } 
@@ -681,9 +596,10 @@ solid line shows the OLS fit with a 95\% confidence band.}
 
 \begin{longtable}[t]{lrrrr}
 
-\caption{\label{tbl-model}Regression of Adult Obesity (\%) on Physical
-Inactivity (\%). Heteroskedasticity-consistent (HC1) standard errors
-reported.}
+\caption{\label{tbl-model}Table 1. Regression results estimating the
+association between physical inactivity and adult obesity across 3,142
+U.S. counties (2023). Heteroskedasticity-consistent (HC1) standard
+errors are reported in parentheses.}
 
 \tabularnewline
 
@@ -701,59 +617,68 @@ Inactivity (\%) & 0.714 & 0.011 & 64.77 & < 0.001\\
 
 \subsection{Discussion}\label{discussion}
 
-The fitted simple linear regression model provides a clear and
-statistically robust summary of the association between physical
-inactivity and adult obesity at the county level. The model explains
-roughly ( 63\% ) of the total cross-county variation in obesity rates,
-suggesting that inactivity alone is a major correlate of
-population-level obesity.
+As shown in Table 1, the estimated linear model indicates a strong
+positive association between physical inactivity and adult obesity rates
+across U.S. counties. The slope estimate (0.71, p \textless{} 0.001)
+implies that each additional percentage point of physical inactivity
+corresponds to a 0.71 percentage-point increase in adult obesity on
+average. The intercept (17.8) represents the expected obesity rate for a
+hypothetical county with zero inactivity, and the high R² (0.44)
+suggests that nearly half of the variation in county obesity rates can
+be explained by differences in inactivity levels.
 
-Despite the high explanatory power and strong statistical significance (
-( F = 5336,~p \textless{} 2 \times 10\^{}\{-16\} ) ), the model's
-predictive precision for individual counties remains limited. The
-residual standard error of ( 2.86 ) percentage points implies that
-actual county obesity rates can deviate by approximately ( \pm 3 )
-points from model-predicted values, even when inactivity levels are
-known precisely. In addition, confidence intervals for mean predictions
-are narrower than those for individual counties, reflecting the
-uncertainty in predicting unobserved county outcomes.
+Figure 1 visually illustrates this relationship: the fitted OLS line
+rises sharply with inactivity, confirming the positive correlation.
+Diagnostic plots (Figures 2--3) support the validity of the model.
+Residuals show no clear curvature or heteroskedastic pattern, satisfying
+linearity and constant-variance assumptions, while all Cook's-distance
+values remain well below the influence threshold (4 / n), indicating
+that no single county unduly affects the fit.
 
-The diagnostic analyses reveal a generally well-behaved model. Residuals
-are centered and approximately homoscedastic, Q--Q plots show
-near-normality with slight tail deviations, and no Cook's distance value
-exceeds typical influence thresholds. These diagnostics confirm that OLS
-assumptions are reasonably met, and the inference on the slope parameter
-is statistically valid. Nevertheless, mild curvature in residual
-patterns hints that the linear form could slightly understate the
-association's complexity at extreme inactivity levels.
+Taken together, these results highlight the substantial role of physical
+inactivity in predicting obesity prevalence across counties, consistent
+with prior national findings (University of Wisconsin Population Health
+Institute (2023); Centers for Disease Control and Prevention (2023a)).
+Although the model is simple and omits potential confounders such as
+income or education, it effectively captures a meaningful and
+statistically robust linear trend in population-level health behavior.
 
 \subsection{Scope and Limitations}\label{scope-and-limitations}
 
-The findings are \textbf{ecological}, reflecting county-level
-associations rather than individual-level causal effects. The results
-cannot be used to infer that physically inactive individuals are
-necessarily obese; rather, counties with higher inactivity rates also
-tend to have higher aggregate obesity rates. Several unmeasured
-confounders---such as \textbf{age distribution, socioeconomic status,
-built environment,} and \textbf{dietary patterns}---may jointly
-influence both variables. Future research could extend this framework to
-a \textbf{multiple regression model} incorporating these covariates to
-test robustness and identify partial effects.
+These findings are \textbf{ecological}, reflecting county-level
+relationships rather than individual-level causation.\\
+A higher inactivity rate does not mean inactive individuals are
+necessarily obese---only that counties with more inactivity tend to
+exhibit higher aggregate obesity.\\
+Because the analysis is \textbf{cross-sectional} (2023 only), temporal
+or lag effects cannot be inferred.\\
+Future research could incorporate additional predictors---such as age
+distribution, socioeconomic status, or rurality---and extend the model
+to panel data to evaluate trends and causal pathways.
 
-Moreover, the model is \textbf{cross-sectional}, describing associations
-for a single year (2023). It does not capture temporal dynamics or
-potential lag effects. Longitudinal modeling of panel data would provide
-stronger evidence about persistence or causality in these relationships.
+Despite these limitations, this analysis provides a transparent,
+reproducible baseline for understanding how physical inactivity aligns
+with obesity prevalence across U.S. counties and offers a foundation for
+future, more detailed modeling.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-CHR2023}
-County Health Rankings \& Roadmaps. 2023. {``County Health Rankings \&
-Roadmaps: 2023 Ranked Measure Data.''}
-\url{https://www.countyhealthrankings.org/}.
+\bibitem[\citeproctext]{ref-BRFSS_2023}
+Centers for Disease Control and Prevention. 2023a. {``Behavioral Risk
+Factor Surveillance System (BRFSS): 2023 Annual Data.''} U.S. Department
+of Health; Human Services.
+\url{https://www.cdc.gov/brfss/annual_data/annual_2023.html}.
+
+\bibitem[\citeproctext]{ref-CDC_PhysicalActivity2023}
+---------. 2023b. {``Physical Activity Facts.''}
+\url{https://www.cdc.gov/physicalactivity/data/index.html}.
+
+\bibitem[\citeproctext]{ref-CDC_Obesity2024}
+---------. 2024. {``Adult Obesity Facts.''}
+\url{https://www.cdc.gov/obesity/data/adult.html}.
 
 \bibitem[\citeproctext]{ref-R-base}
 R Core Team. 2024. \emph{R: A Language and Environment for Statistical
@@ -764,6 +689,17 @@ Computing}. Vienna, Austria: R Foundation for Statistical Computing.
 Robinson, David, Alex Hayes, and Simon Couch. 2024. \emph{Broom: Convert
 Statistical Objects into Tidy Tibbles}.
 \url{https://broom.tidymodels.org/}.
+
+\bibitem[\citeproctext]{ref-CHR2023}
+University of Wisconsin Population Health Institute. 2023. {``County
+Health Rankings \& Roadmaps (CHR\&r) 2023 Data.''} Harvard Dataverse.
+\url{https://doi.org/10.7910/DVN/LCYV3E}.
+
+\bibitem[\citeproctext]{ref-White1980}
+White, Halbert. 1980. {``A Heteroskedasticity-Consistent Covariance
+Matrix Estimator and a Direct Test for Heteroskedasticity.''}
+\emph{Econometrica} 48 (4): 817--38.
+\url{https://doi.org/10.2307/1912934}.
 
 \bibitem[\citeproctext]{ref-ggplot2-book}
 Wickham, Hadley. 2016. \emph{Ggplot2: Elegant Graphics for Data
@@ -784,6 +720,10 @@ Manipulation}. \url{https://dplyr.tidyverse.org/}.
 \bibitem[\citeproctext]{ref-readr}
 Wickham, Hadley, Jim Hester, and posit team. 2024. \emph{Readr: Read
 Rectangular Text Data}. \url{https://readr.tidyverse.org/}.
+
+\bibitem[\citeproctext]{ref-WHO_Obesity2023}
+World Health Organization. 2023. {``Obesity and Overweight.''}
+\url{https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight}.
 
 \end{CSLReferences}
 

@@ -47,3 +47,30 @@ p <- ggplot(d, aes(inactivity_pct, obesity_pct)) +
   theme_minimal(base_size = 12)
 ggsave("fig/county_scatter.png", p, width = 7, height = 5, dpi = 300)
 
+diag <- broom::augment(m)  # adds .fitted, .resid, .hat, .cooksd (if available)
+diag$cooks <- cooks.distance(m)
+p_res <- ggplot(diag, aes(x = .fitted, y = .resid)) +
+  geom_point(alpha = 0.4, size = 1) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray40") +
+  labs(
+    title = "Residuals vs Fitted — Adult Obesity ~ Physical Inactivity",
+    x = "Fitted values (Predicted Adult Obesity, %)",
+    y = "Residuals"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggsave("fig/residuals_vs_fitted.png", p_res, width = 7, height = 5, dpi = 300)
+cook_threshold <- 4 / nrow(diag)  # common rule-of-thumb threshold
+p_cook <- ggplot(diag, aes(x = seq_along(cooks), y = cooks)) +
+  geom_col(alpha = 0.8) +
+  geom_hline(yintercept = cook_threshold, linetype = "dashed", color = "gray40") +
+  labs(
+    title = "Cook's Distance — Assessing Influential Observations",
+    x = "Observation index (county)",
+    y = "Cook's Distance"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggsave("fig/cooks_distance.png", p_cook, width = 7, height = 5, dpi = 300)
+
+
