@@ -192,7 +192,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Modeling the association between Physical Inactivity and Adult Obesity in U.S. Counties},
+  pdftitle={The More We Sit, the More We Weigh: A County-Level Regression Analysis of Physical Inactivity and Obesity in the U.S.},
   pdfauthor={Abhiram Bhokre},
   colorlinks=true,
   linkcolor={blue},
@@ -202,8 +202,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Modeling the association between Physical Inactivity and Adult
-Obesity in U.S. Counties\thanks{Project repository available at:
+\title{The More We Sit, the More We Weigh: A County-Level Regression
+Analysis of Physical Inactivity and Obesity in the U.S.\thanks{Project
+repository available at:
 \url{https://github.com/abhirambhokre1408/Math_261A_Paper_1}.}}
 \author{Abhiram Bhokre}
 \date{October 29, 2025}
@@ -552,9 +553,11 @@ below.
 
 }
 
-\caption{\label{fig-county-scatter}Adult Obesity (\%) vs Physical
-Inactivity (\%) --- U.S. Counties (2023). Points represent counties; the
-solid line shows the OLS fit with a 95\% confidence band.}
+\caption{\label{fig-county-scatter}Relationship between Adult Obesity
+(\%) and Physical Inactivity (\%) across U.S. Counties (2023). Each
+point represents a county, and the fitted OLS line shows a strong
+positive association: counties with higher inactivity tend to have
+higher obesity prevalence.}
 
 \end{figure}%
 
@@ -567,9 +570,9 @@ solid line shows the OLS fit with a 95\% confidence band.}
 }
 
 \caption{\label{fig-residuals}Residuals vs Fitted Values for the obesity
-\textasciitilde{} inactivity model. Random scatter around zero supports
-linearity and roughly constant variance; dashed line marks zero
-residual.}
+\textasciitilde{} inactivity model. The random scatter around zero
+supports the linearity and constant-variance assumptions, indicating
+that the OLS fit is appropriate.}
 
 \end{figure}%
 
@@ -581,9 +584,9 @@ residual.}
 
 }
 
-\caption{\label{fig-cooks}Cook's Distance by observation (county). The
-dashed line marks a rule-of-thumb threshold (4/n). No observations
-exceed the threshold, indicating no highly influential counties.}
+\caption{\label{fig-cooks}Cook's Distance by observation (county). All
+values lie well below the common influence threshold (4/n), indicating
+that no single county unduly affects the regression estimates.}
 
 \end{figure}%
 
@@ -596,10 +599,10 @@ exceed the threshold, indicating no highly influential counties.}
 
 \begin{longtable}[t]{lrrrr}
 
-\caption{\label{tbl-model}Table 1. Regression results estimating the
-association between physical inactivity and adult obesity across 3,142
-U.S. counties (2023). Heteroskedasticity-consistent (HC1) standard
-errors are reported in parentheses.}
+\caption{\label{tbl-model}Regression results estimating the association
+between physical inactivity and adult obesity across 3,142 U.S. counties
+(2023). Heteroskedasticity-consistent (HC1) standard errors are reported
+in parentheses.}
 
 \tabularnewline
 
@@ -623,7 +626,7 @@ across U.S. counties. The slope estimate (0.71, p \textless{} 0.001)
 implies that each additional percentage point of physical inactivity
 corresponds to a 0.71 percentage-point increase in adult obesity on
 average. The intercept (17.8) represents the expected obesity rate for a
-hypothetical county with zero inactivity, and the high R² (0.44)
+hypothetical county with zero inactivity, and the high R² (0.63)
 suggests that nearly half of the variation in county obesity rates can
 be explained by differences in inactivity levels.
 

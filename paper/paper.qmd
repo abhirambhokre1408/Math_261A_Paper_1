@@ -1,5 +1,5 @@
 ---
-title: "Modeling the association between Physical Inactivity and Adult Obesity in U.S. Counties"
+title: "The More We Sit, the More We Weigh: A County-Level Regression Analysis of Physical Inactivity and Obesity in the U.S."
 author: "Abhiram Bhokre"
 thanks: "Project repository available at: [https://github.com/abhirambhokre1408/Math_261A_Paper_1](https://github.com/abhirambhokre1408/Math_261A_Paper_1)."
 date: today
@@ -201,7 +201,7 @@ cook_threshold <- 4 / nrow(diag_df)
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-cap: "Adult Obesity (%) vs Physical Inactivity (%) — U.S. Counties (2023). Points represent counties; the solid line shows the OLS fit with a 95% confidence band."
+#| fig-cap: "Relationship between Adult Obesity (%) and Physical Inactivity (%) across U.S. Counties (2023). Each point represents a county, and the fitted OLS line shows a strong positive association: counties with higher inactivity tend to have higher obesity prevalence."
 library(ggplot2)
 
 ggplot(d, aes(x = inactivity_pct, y = obesity_pct)) +
@@ -220,7 +220,7 @@ ggplot(d, aes(x = inactivity_pct, y = obesity_pct)) +
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-cap: "Residuals vs Fitted Values for the obesity ~ inactivity model. Random scatter around zero supports linearity and roughly constant variance; dashed line marks zero residual."
+#| fig-cap: "Residuals vs Fitted Values for the obesity ~ inactivity model. The random scatter around zero supports the linearity and constant-variance assumptions, indicating that the OLS fit is appropriate."
 #| fig-pos: H
 #| fig-width: 7.8
 #| fig-asp: 0.62
@@ -241,7 +241,7 @@ ggplot(diag_df, aes(x = .fitted, y = .resid)) +
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-cap: "Cook’s Distance by observation (county). The dashed line marks a rule-of-thumb threshold (4/n). No observations exceed the threshold, indicating no highly influential counties."
+#| fig-cap: "Cook’s Distance by observation (county). All values lie well below the common influence threshold (4/n), indicating that no single county unduly affects the regression estimates."
 #| fig-pos: H
 #| fig-width: 7.8
 #| fig-asp: 0.45
@@ -259,7 +259,7 @@ ggplot(diag_df, aes(x = seq_along(cooks), y = cooks)) +
 
 ```{r}
 #| label: tbl-model
-#| tbl-cap: "Table 1. Regression results estimating the association between physical inactivity and adult obesity across 3,142 U.S. counties (2023). Heteroskedasticity-consistent (HC1) standard errors are reported in parentheses."
+#| tbl-cap: "Regression results estimating the association between physical inactivity and adult obesity across 3,142 U.S. counties (2023). Heteroskedasticity-consistent (HC1) standard errors are reported in parentheses."
 #| tbl-pos: H
 #| echo: false
 #| warning: false
@@ -294,7 +294,7 @@ knitr::kable(tab, align = "lrrrr", booktabs = TRUE, escape = FALSE) %>%
 
 ## Discussion
 
-As shown in Table 1, the estimated linear model indicates a strong positive association between physical inactivity and adult obesity rates across U.S. counties. The slope estimate (0.71, p < 0.001) implies that each additional percentage point of physical inactivity corresponds to a 0.71 percentage-point increase in adult obesity on average. The intercept (17.8) represents the expected obesity rate for a hypothetical county with zero inactivity, and the high R² (0.44) suggests that nearly half of the variation in county obesity rates can be explained by differences in inactivity levels.
+As shown in Table 1, the estimated linear model indicates a strong positive association between physical inactivity and adult obesity rates across U.S. counties. The slope estimate (0.71, p < 0.001) implies that each additional percentage point of physical inactivity corresponds to a 0.71 percentage-point increase in adult obesity on average. The intercept (17.8) represents the expected obesity rate for a hypothetical county with zero inactivity, and the high R² (0.63) suggests that nearly half of the variation in county obesity rates can be explained by differences in inactivity levels.
 
 Figure 1 visually illustrates this relationship: the fitted OLS line rises sharply with inactivity, confirming the positive correlation. Diagnostic plots (Figures 2–3) support the validity of the model. Residuals show no clear curvature or heteroskedastic pattern, satisfying linearity and constant-variance assumptions, while all Cook’s-distance values remain well below the influence threshold (4 / n), indicating that no single county unduly affects the fit.
 
